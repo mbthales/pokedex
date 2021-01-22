@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import PokemonsContainer from './Components/PokemonsContainer';
+
 const App = () => {
   const [urlDefault, setUrlDefault] = 
     useState("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20");
@@ -44,8 +46,9 @@ const App = () => {
 
   return(
     <>
-      <p>Hello World!</p>
-      <button onClick={() => getPokemonsUrl()}>Clique</button>
+      <h1>Pokedex</h1>
+      <button onClick={() => getPokemonsUrl()}>Get More Pokemons</button>
+      <PokemonsContainer pokemons={pokemonsInfo}></PokemonsContainer>
     </>
   )
 };
