@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 
 import PokemonsContainer from "./PokemonsContainer";
 
-import { getPokemonsUrls } from '../helpers/helpers';
+import { getPokemonsUrls } from "../helpers/helpers";
 
 const Home = () => {
   const url = useSelector(({ urlDefault }) => urlDefault);
+
   const dispatch = useDispatch();
   
   return(

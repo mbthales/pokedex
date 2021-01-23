@@ -1,22 +1,14 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
-import { getPokemonsInfo } from "../helpers/helpers";
+import React from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const PokemonsContainer = () => {
-  const pokemonsUrls = useSelector(({ pokemonsUrls }) => pokemonsUrls);
   const pokemonsInfo = useSelector(({ pokemonsInfo }) => pokemonsInfo);
-
-  const dispatch = useDispatch();
-
-  useEffect(async() => {
-    dispatch(await getPokemonsInfo(pokemonsUrls));
-  }, [pokemonsUrls]);
 
   return (
     pokemonsInfo.map(({ id, name, image }) => (
       <div key={id}>
-        <p>{name}</p>
+        <Link to="/pokemon-details"><p>{name}</p></Link>
         <img src={image}/>
       </div>
     ))

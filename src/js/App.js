@@ -9,15 +9,21 @@ import { useSelector, useDispatch } from "react-redux";
 import Home from "./Components/Home";
 import PokemonDetails from "./Components/PokemonDetails";
 
-import { getPokemonsUrls } from "./helpers/helpers";
+import { getPokemonsUrls, getPokemonsInfo } from "./helpers/helpers";
 
 const App = () => {
   const urlDefault = useSelector(({ urlDefault }) => urlDefault);
+  const pokemonsUrls = useSelector(({ pokemonsUrls }) => pokemonsUrls);
+
   const dispatch = useDispatch();
 
   useEffect(async() => {
     dispatch(await getPokemonsUrls(urlDefault));
   }, []);
+
+  useEffect(async() => {
+    dispatch(await getPokemonsInfo(pokemonsUrls));
+  }, [pokemonsUrls]);
 
   return(
     <>
@@ -26,9 +32,9 @@ const App = () => {
           <Route exact path="/">
             <Home></Home>
           </Route>
-          {/* <Route path="/PokemonDetails">
+          <Route path="/pokemon-details">
             <PokemonDetails></PokemonDetails>
-          </Route> */}
+          </Route>
         </Switch>
       </Router>
     </>
