@@ -28,8 +28,8 @@ const filterPokemonsInfo = data=> {
     name,
     id,
     image: sprites.front_default,
-    types,
-    moves
+    types: types.map(({ type }) => type.name),
+    moves: moves.map(({ move }) => move.name)
   }))
 };
 

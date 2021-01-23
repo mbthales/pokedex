@@ -7,13 +7,14 @@ const PokemonsContainer = () => {
 
   return (
     pokemonsInfo.map(({ id, name, image }) => (
-      <div key={id}>
-        <Link to="/pokemon-details"><p>{name}</p></Link>
-        <img src={image}/>
-      </div>
+      <Link to="/pokemon-details" onClick={() => console.log(id)} key={id}>
+        <div>
+          <p>{name}</p>
+          <img src={image}/>
+        </div>
+      </Link>
     ))
   )    
-  
 };
 
 export default PokemonsContainer;

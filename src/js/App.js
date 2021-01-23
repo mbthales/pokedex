@@ -22,7 +22,9 @@ const App = () => {
   }, []);
 
   useEffect(async() => {
-    dispatch(await getPokemonsInfo(pokemonsUrls));
+    if(pokemonsUrls.length > 0){
+      dispatch(await getPokemonsInfo(pokemonsUrls));
+    }
   }, [pokemonsUrls]);
 
   return(
