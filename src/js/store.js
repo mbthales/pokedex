@@ -1,9 +1,10 @@
-import { createStore } from 'redux';
+import { createStore } from "redux";
 
 const initialState = {
   urlDefault: "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20",
   pokemonsUrls: [],
   pokemonsInfo: [],
+  pokemonDetailsSelected: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -18,6 +19,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         pokemonsInfo: state.pokemonsInfo.concat(action.payload)
+      }
+    case "getPokemonDetailsSelected":
+      return{
+        ...state,
+        pokemonDetailsSelected: state.pokemonsInfo.filter(({ id }) => id === action.payload)[0]
       }
     default:
       return state;
