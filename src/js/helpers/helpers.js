@@ -10,7 +10,7 @@ const getPokemonsUrls = async(url) => {
       urlDefault: data.next? data.next: null,
       pokemonsUrls: data.results.map(result => result.url)
     }
-  }
+  };
 };
 
 const getPokemonsInfo = async(pokemonsUrls) => {
@@ -20,17 +20,21 @@ const getPokemonsInfo = async(pokemonsUrls) => {
   return {
     type: "getPokemonsInfo",
     payload: filterPokemonsInfo(data)
-  }
+  };
 };
 
 const filterPokemonsInfo = data=> {
-  return data.map(({ name, id, sprites, types, moves}) => ({
+  return data.map(({ name, id, sprites, types, weight, stats }) => ({
     name,
     id,
     image: sprites.front_default,
     types: types.map(({ type }) => type.name),
-    moves: moves.map(({ move }) => move.name)
-  }))
+    weight: weight / 10,
+    stats: stats.map(({ base_stat, stat }) => ({
+      baseStat: base_stat,
+      nameStat: stat.name,
+    }))
+  }));
 };
 
 export { getPokemonsUrls, getPokemonsInfo };

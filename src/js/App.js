@@ -24,6 +24,7 @@ const App = () => {
   useEffect(async() => {
     if(pokemonsUrls.length > 0){
       dispatch(await getPokemonsInfo(pokemonsUrls));
+      console.log(await getPokemonsInfo(pokemonsUrls));
     }
   }, [pokemonsUrls]);
 

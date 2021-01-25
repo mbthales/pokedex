@@ -9,22 +9,25 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
+    "babel-plugin-styled-components": "^1.12.0",
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "re": "^0.1.4",
-    "reac": "0.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "styled-components": "^5.2.1"
   },
   "babel": {
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
+    ],
+    "plugins": [
+      "babel-plugin-styled-components"
     ]
   },
   "browserslist": [
