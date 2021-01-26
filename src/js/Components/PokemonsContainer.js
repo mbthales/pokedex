@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 import { getPokemonsUrls } from "../helpers/helpers";
-
 
 const PokemonBox = styled.div`
   width: 150px;
@@ -30,7 +29,7 @@ const PokemonName = styled.h3`
   font-weight: normal;
 `;
 
-const PokemonImage = styled.img`
+const PokemonImg = styled.img`
   width: 100px;
   height: 100px;
   position: absolute;
@@ -39,7 +38,7 @@ const PokemonImage = styled.img`
 
 const LoadingMsg = styled.p`
   margin-bottom: 30px;
-`
+`;
 
 const BtnMorePokemons = styled.button`
   display: block;
@@ -55,11 +54,12 @@ const BtnMorePokemons = styled.button`
   } 
 `;
 
-
 const PokemonsContainer = () => {
+  const [isLoadingMorePokemons, setIsLoadingMorePokemons] = useState(false);
+
   const urlDefault = useSelector(({ urlDefault }) => urlDefault);
   const pokemonsInfo = useSelector(({ pokemonsInfo }) => pokemonsInfo);
-  const [isLoadingMorePokemons, setIsLoadingMorePokemons] = useState(false);
+
   const dispatch = useDispatch();
 
   const getPokemonDetailsSelected = id => {
@@ -71,16 +71,16 @@ const PokemonsContainer = () => {
 
   useEffect(() => {
     setIsLoadingMorePokemons(false);
-  }, [pokemonsInfo])
+  }, [pokemonsInfo]);
 
   return (
-    <>
+    <main>
       {
         pokemonsInfo.map(({ id, name, image }) => (
           <Link to="/pokemon-details" onClick={() => getPokemonDetailsSelected(id)} key={id}>
             <PokemonBox>
               <PokemonName>{name}</PokemonName>
-              <PokemonImage src={image}/>
+              <PokemonImg src={image}/>
             </PokemonBox>
           </Link>
         ))        
@@ -95,7 +95,7 @@ const PokemonsContainer = () => {
         </BtnMorePokemons> 
         :<LoadingMsg>Loading...</LoadingMsg>        
       }
-    </>
+    </main>
   )    
 };
 

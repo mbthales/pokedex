@@ -1,6 +1,6 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
 
 import PokemonsContainer from "./PokemonsContainer";
 
@@ -23,20 +23,27 @@ const LoadingMsg = styled.p`
 const Home = () => {
   const pokemonsInfo = useSelector(({ pokemonsInfo }) => pokemonsInfo);
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: "getCurrentPage",
+      payload: window.location.pathname,
+    });
+  }, []);
+
   return(
     <>
       <Header>
         <Title>Pokedex</Title>
       </Header>
-      <main>
-        {
-          pokemonsInfo.length > 0?
-          <PokemonsContainer></PokemonsContainer>
-          : <LoadingMsg>Loading...</LoadingMsg>
-        }
-      </main>
+      {
+        pokemonsInfo.length > 0?
+        <PokemonsContainer></PokemonsContainer>
+        :<LoadingMsg>Loading...</LoadingMsg>
+      }
     </>
-  )
+  );
 };
 
 export default Home;

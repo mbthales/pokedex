@@ -5,32 +5,31 @@ const initialState = {
   pokemonsUrls: [],
   pokemonsInfo: [],
   pokemonDetailsSelected: {},
-  scrollToPosition: 500,
 };
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
+const reducer = (state = initialState, { type, payload }) => {
+  switch (type) {
     case "getPokemonsUrls":
       return{
         ...state,
-        urlDefault: action.payload.urlDefault,
-        pokemonsUrls: action.payload.pokemonsUrls
+        urlDefault: payload.urlDefault,
+        pokemonsUrls: payload.pokemonsUrls
       };
     case "getPokemonsInfo":
       return {
         ...state,
-        pokemonsInfo: state.pokemonsInfo.concat(action.payload)
+        pokemonsInfo: state.pokemonsInfo.concat(payload)
       }
     case "getPokemonDetailsSelected":
       return{
         ...state,
-        pokemonDetailsSelected: state.pokemonsInfo.filter(({ id }) => id === action.payload)[0]
+        pokemonDetailsSelected: state.pokemonsInfo.filter(({ id }) => id === payload)[0]
       }
     default:
       return state;
   }
 };
 
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 export default store;

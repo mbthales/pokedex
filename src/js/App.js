@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
+import { createGlobalStyle } from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
+  Route
 } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import styled, { createGlobalStyle } from 'styled-components';
 
 import Home from "./Components/Home";
 import PokemonDetails from "./Components/PokemonDetails";
@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.5;
     text-decoration: none;
   }
-
+  
   html{
     font-size: 20px;
     font-family: "Sen", sans-serif;
@@ -40,12 +40,11 @@ const GlobalStyle = createGlobalStyle`
     background-color: #E5E5E5;
     text-align: center;
   }
-`
+`;
 
 const App = () => {
   const urlDefault = useSelector(({ urlDefault }) => urlDefault);
   const pokemonsUrls = useSelector(({ pokemonsUrls }) => pokemonsUrls);
-
 
   const dispatch = useDispatch();
 
@@ -56,24 +55,22 @@ const App = () => {
   useEffect(async() => {
     if(pokemonsUrls.length > 0){
       dispatch(await getPokemonsInfo(pokemonsUrls));
-    }
+    };
   }, [pokemonsUrls]);
 
   return(
-    <>
-      <Router>
-        <GlobalStyle></GlobalStyle>
-        <Switch>
-          <Route exact path="/">
-            <Home></Home>
-          </Route>
-          <Route path="/pokemon-details">
-            <PokemonDetails></PokemonDetails>
-          </Route>
-        </Switch>
-      </Router>
-    </>
-  )
+    <Router>
+      <GlobalStyle></GlobalStyle>
+      <Switch>
+        <Route exact path="/">
+          <Home></Home>
+        </Route>
+        <Route path="/pokemon-details">
+          <PokemonDetails></PokemonDetails>
+        </Route>
+      </Switch>
+    </Router>
+  );
 };
 
 export default App;
