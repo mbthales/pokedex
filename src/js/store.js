@@ -5,6 +5,7 @@ const initialState = {
   pokemonsUrls: [],
   pokemonsInfo: [],
   pokemonDetailsSelected: {},
+  scrollToPosition: 500,
 };
 
 const reducer = (state = initialState, action) => {

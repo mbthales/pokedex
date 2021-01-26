@@ -1,9 +1,65 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import styled from 'styled-components';
+
+import { getPokemonsUrls } from "../helpers/helpers";
+
+
+const PokemonBox = styled.div`
+  width: 150px;
+  height: 150px;
+  background-color: #DEDEDE;
+  display: inline-flex;
+  justify-content: center;
+  margin: 60px 85px;
+  border-radius: 3px;
+  position: relative;
+
+  &:hover{
+    transform: scale(1.2);
+    box-shadow: 0px 0px 6px 1px #131111;
+    cursor: pointer;
+  }
+`;
+
+const PokemonName = styled.h3`
+  color: #131111;
+  font-size: 1.2rem;
+  padding-top: 10px;
+  font-weight: normal;
+`;
+
+const PokemonImage = styled.img`
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+`;
+
+const LoadingMsg = styled.p`
+  margin-bottom: 30px;
+`
+
+const BtnMorePokemons = styled.button`
+  display: block;
+  margin: 0 auto;
+  background-color: #E5E5E5;
+  font-family: "Sen", sans-serif;
+  font-size: 1rem;
+  margin-bottom: 30px;
+
+  &:hover{
+    border-bottom: 2px solid #000;
+    cursor: pointer;
+  } 
+`;
+
 
 const PokemonsContainer = () => {
+  const urlDefault = useSelector(({ urlDefault }) => urlDefault);
   const pokemonsInfo = useSelector(({ pokemonsInfo }) => pokemonsInfo);
+  const [isLoadingMorePokemons, setIsLoadingMorePokemons] = useState(false);
   const dispatch = useDispatch();
 
   const getPokemonDetailsSelected = id => {
@@ -13,15 +69,33 @@ const PokemonsContainer = () => {
     });
   };
 
+  useEffect(() => {
+    setIsLoadingMorePokemons(false);
+  }, [pokemonsInfo])
+
   return (
-    pokemonsInfo.map(({ id, name, image }) => (
-      <Link to="/pokemon-details" onClick={() => getPokemonDetailsSelected(id)} key={id}>
-        <div>
-          <p>{name}</p>
-          <img src={image}/>
-        </div>
-      </Link>
-    ))
+    <>
+      {
+        pokemonsInfo.map(({ id, name, image }) => (
+          <Link to="/pokemon-details" onClick={() => getPokemonDetailsSelected(id)} key={id}>
+            <PokemonBox>
+              <PokemonName>{name}</PokemonName>
+              <PokemonImage src={image}/>
+            </PokemonBox>
+          </Link>
+        ))        
+      }
+      {
+        urlDefault && !isLoadingMorePokemons?
+        <BtnMorePokemons onClick={async() => {
+          dispatch(await getPokemonsUrls(urlDefault));
+          setIsLoadingMorePokemons(true);
+        }}>
+          Get More Pokemons
+        </BtnMorePokemons> 
+        :<LoadingMsg>Loading...</LoadingMsg>        
+      }
+    </>
   )    
 };
 

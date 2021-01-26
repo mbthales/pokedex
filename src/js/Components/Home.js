@@ -1,22 +1,40 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import styled from "styled-components";
 
 import PokemonsContainer from "./PokemonsContainer";
 
-import { getPokemonsUrls } from "../helpers/helpers";
+const Header = styled.header`
+  height: 200px;
+  background-color: #A42323;
+`;
+
+const Title = styled.h1`
+  line-height: 200px;
+  font-size: 3rem;
+  color: #FAF9F9;
+`;
+
+const LoadingMsg = styled.p`
+  margin-top: 60px;
+`;
+
 
 const Home = () => {
-  const url = useSelector(({ urlDefault }) => urlDefault);
+  const pokemonsInfo = useSelector(({ pokemonsInfo }) => pokemonsInfo);
 
-  const dispatch = useDispatch();
-  
   return(
     <>
-      <h1>Pokedex</h1>
-      <button onClick={async() => dispatch(await getPokemonsUrls(url))}>
-        Get More Pokemons
-      </button>
-      <PokemonsContainer></PokemonsContainer>
+      <Header>
+        <Title>Pokedex</Title>
+      </Header>
+      <main>
+        {
+          pokemonsInfo.length > 0?
+          <PokemonsContainer></PokemonsContainer>
+          : <LoadingMsg>Loading...</LoadingMsg>
+        }
+      </main>
     </>
   )
 };

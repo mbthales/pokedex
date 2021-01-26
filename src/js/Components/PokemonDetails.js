@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
 const PokemonTypes = styled.li`
@@ -23,8 +23,7 @@ const PokemonStats = styled.li`
 
 const Test = () => {
   const { name, image, types, weight, stats } = useSelector(({ pokemonDetailsSelected }) => pokemonDetailsSelected);
-  
-  console.log(stats);
+
   return(
     <>
       <Link to="/"><button>Volte</button></Link>
