@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import { getPokemonsUrls } from "../helpers/helpers";
 
-const PokemonBox = styled.div`
+const LinkToPokemonDetail = styled(Link)`
   width: 150px;
   height: 150px;
   background-color: #DEDEDE;
@@ -32,8 +32,6 @@ const PokemonName = styled.h3`
 const PokemonImg = styled.img`
   width: 100px;
   height: 100px;
-  position: absolute;
-  bottom: 0;
 `;
 
 const LoadingMsg = styled.p`
@@ -77,12 +75,18 @@ const PokemonsContainer = () => {
     <main>
       {
         pokemonsInfo.map(({ id, name, image }) => (
-          <Link to="/pokemon-details" onClick={() => getPokemonDetailsSelected(id)} key={id}>
-            <PokemonBox>
+          
+          <LinkToPokemonDetail 
+            key={id}  
+            onClick={() => getPokemonDetailsSelected(id)} 
+            to="/pokemon-details" 
+          >
+            <div>
               <PokemonName>{name}</PokemonName>
-              <PokemonImg src={image}/>
-            </PokemonBox>
-          </Link>
+                <PokemonImg src={image}/>
+            </div>
+          </LinkToPokemonDetail>
+          
         ))        
       }
       {

@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import PokemonsContainer from "./PokemonsContainer";
 
@@ -10,7 +10,7 @@ const Header = styled.header`
 `;
 
 const Title = styled.h1`
-  line-height: 200px;
+  line-height: 200px; 
   font-size: 3rem;
   color: #FAF9F9;
 `;
@@ -19,18 +19,8 @@ const LoadingMsg = styled.p`
   margin-top: 60px;
 `;
 
-
 const Home = () => {
   const pokemonsInfo = useSelector(({ pokemonsInfo }) => pokemonsInfo);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch({
-      type: "getCurrentPage",
-      payload: window.location.pathname,
-    });
-  }, []);
 
   return(
     <>
