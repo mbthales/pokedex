@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { createGlobalStyle } from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import {
   BrowserRouter as Router,
@@ -7,42 +6,12 @@ import {
   Route
 } from "react-router-dom";
 
-import { hot } from 'react-hot-loader';
-
-import Home from "./Components/Home";
-import PokemonDetails from "./Components/PokemonDetails";
+import Home from "./Components/Home/Home";
+import PokemonDetails from "./Components/Pokemon-Details/PokemonDetails";
 
 import { getPokemonsUrls, getPokemonsInfo } from "./helpers/helpers";
 
-const GlobalStyle = createGlobalStyle`
-  *{
-    padding: 0;
-    margin: 0;
-    border: 0;
-    box-sizing: border-box;
-    list-style: none;
-    line-height: 1.5;
-    text-decoration: none;
-  }
-  
-  html{
-    font-size: 20px;    
-    font-family: "Sen", sans-serif;
-
-    @media(min-width: 768px) {
-      font-size: 18px;
-    }
-
-    @media(min-width: 1024px) {
-      font-size: 16px;
-    }
-  }
-
-  body{
-    background-color: #E5E5E5;
-    text-align: center;
-  }
-`;
+import DefaultCss from './AppStyle';
 
 const App = () => {
   const urlDefault = useSelector(({ urlDefault }) => urlDefault);
@@ -62,7 +31,7 @@ const App = () => {
 
   return(
     <Router>
-      <GlobalStyle></GlobalStyle>
+      <DefaultCss></DefaultCss>
       <Switch>
         <Route exact path="/">
           <Home></Home>
@@ -75,4 +44,4 @@ const App = () => {
   );
 };
 
-export default hot(module)(App);
+export default App;

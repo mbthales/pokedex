@@ -1,23 +1,9 @@
 import React from "react";
-import styled from "styled-components";
 import { useSelector } from "react-redux";
 
-import PokemonsContainer from "./PokemonsContainer";
+import PokemonsContainer from "../Pokemons-Container/PokemonsContainer";
 
-const Header = styled.header`
-  height: 200px;
-  background-color: #A42323;
-`;
-
-const Title = styled.h1`
-  line-height: 200px; 
-  font-size: 3rem;
-  color: #FAF9F9;
-`;
-
-const LoadingMsg = styled.p`
-  margin-top: 60px;
-`;
+import { Header, Title, LoadingMsg } from './HomeStyle';
 
 const Home = () => {
   const pokemonsInfo = useSelector(({ pokemonsInfo }) => pokemonsInfo);
