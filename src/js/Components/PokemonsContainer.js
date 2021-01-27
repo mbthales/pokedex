@@ -22,7 +22,7 @@ const LinkToPokemonDetail = styled(Link)`
   }
 `;
 
-const PokemonName = styled.h3`
+const PokemonName = styled.h2`
   color: #131111;
   font-size: 1.2rem;
   padding-top: 10px;

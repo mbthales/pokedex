@@ -7,6 +7,8 @@ import {
   Route
 } from "react-router-dom";
 
+import { hot } from 'react-hot-loader';
+
 import Home from "./Components/Home";
 import PokemonDetails from "./Components/PokemonDetails";
 
@@ -24,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   html{
-    font-size: 20px;
+    font-size: 20px;    
     font-family: "Sen", sans-serif;
 
     @media(min-width: 768px) {
@@ -73,4 +75,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default hot(module)(App);

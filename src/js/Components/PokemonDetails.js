@@ -49,7 +49,29 @@ const PokemonTypes = styled.li`
 
 const PokemonStats = styled.li`
   width: ${({ baseStat }) => `${baseStat}%`};
-  background-color: red;
+  background-color: #A42323;
+  color: #FAF9F9;
+`;
+
+const LinkToReturn = styled(Link)`
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background-color: transparent;
+  font-size: 1.5rem;
+  color: #131111;
+  font-weight: bold;
+`;
+
+const PokemonName = styled.h2`
+  font-size: 1.2rem;
+  color: #131111;
+  font-weight: normal;
+`;
+
+const PokemonImg = styled.img`
+  width: 150px;
+  height: 150px;
 `;
 
 const PokemonDetails = () => {
@@ -68,14 +90,17 @@ const PokemonDetails = () => {
   return(
     <main>
       <GlobalStyle></GlobalStyle>
-      <Link to="/"><button>&#10094;</button></Link>
+      <LinkToReturn to="/">&#10094;</LinkToReturn>
       <div>
-        <h1>{name}</h1>
-        <img src={image}/>
-        <ul>
-          {types.map((type, i) => <PokemonTypes typeName={type} key={i}>{type}</PokemonTypes>)}
-        </ul>
-        <p>{weight}kg</p>
+        <PokemonName>{name}</PokemonName>
+        <PokemonImg src={image}/>
+        <p>Weight: {weight}kg</p>
+        <div>
+        <p>Types:</p>
+          <ul>
+            {types.map((type, i) => <PokemonTypes typeName={type} key={i}>{type}</PokemonTypes>)}
+          </ul>
+        </div>
         <ul>
           {stats.map(({ baseStat, nameStat }, i) => <PokemonStats key={i} baseStat={baseStat}>{nameStat}</PokemonStats>)}
         </ul>
