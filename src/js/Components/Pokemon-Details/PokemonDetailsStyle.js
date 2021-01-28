@@ -72,7 +72,7 @@ const LinkToReturn = styled(Link)`
 `;
 
 const PokemonWrapper = styled.div`
-  h2{
+  h1{
     font-size: 1.2rem;
     color: ${colors.quinary};
     font-weight: normal;
@@ -83,15 +83,14 @@ const PokemonWrapper = styled.div`
     height: 200px;
   }
 
+  section:nth-child(n + 2){
+    margin-top: 20px;
+  }
   
-  p{
+  h2{
     text-align: left;
     font-weight: bold;
     font-size: 0.9rem;
-    
-    &:nth-child(n + 2){
-      margin-top: 20px;
-    }
 
     span{
       font-weight: normal;
@@ -106,8 +105,9 @@ const PokemonWrapper = styled.div`
     line-height: 30px;
   }
 
+
   @media(min-width: 768px){
-  p{
+  h2{
     text-align: center;
 
     &:nth-child(3){
@@ -122,6 +122,7 @@ const PokemonWrapper = styled.div`
      div{
        flex-direction: column;
        display: flex;
+       justify-content: center;
      }
    }
   }

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getPokemonsUrls } from "../../helpers/helpers";
 
-import { LinkToPokemonDetail, LoadingMsg, BtnMorePokemons } from './PokemonsContainerStyle'
+import { LinkToPokemonDetail, LoadingMsg, BtnMorePokemons } from "./PokemonsContainerStyle";
 
 const PokemonsContainer = () => {
   const [isLoadingMorePokemons, setIsLoadingMorePokemons] = useState(false);
@@ -35,7 +35,7 @@ const PokemonsContainer = () => {
           >
             <div>
               <h2>{name}</h2>
-                <img src={image}/>
+                <img src={image} alt={`${name} image`} loading="lazy"/>
             </div>
           </LinkToPokemonDetail>
         ))        

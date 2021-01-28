@@ -35,6 +35,7 @@ const DefaultCss = createGlobalStyle`
 
   body{
     background-color: ${colors.terciary};
+    
     text-align: center;
   }
 `;

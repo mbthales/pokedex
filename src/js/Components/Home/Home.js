@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import PokemonsContainer from "../Pokemons-Container/PokemonsContainer";
 
-import { Header, LoadingMsg } from './HomeStyle';
+import { Header, LoadingMsg } from "./HomeStyle";
 
 const Home = () => {
   const pokemonsInfo = useSelector(({ pokemonsInfo }) => pokemonsInfo);
