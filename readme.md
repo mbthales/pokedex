@@ -4,8 +4,8 @@ A pokedex build with React JS.
 ## Usage
 Download or clone this repo, type "npm install" in your cmd and "npm run dev" after; or just click in this [link](https://mbthales.github.io/pokedex/).
 
-## Tech
-The following tools were used in the construction of the project.
+## Tech/Tools
+The following tech/tools were used in the construction of the project.
 - [Parcel](https://parceljs.org/)
 - [React JS](https://pt-br.reactjs.org/)
 - [React Redux](https://react-redux.js.org/)
