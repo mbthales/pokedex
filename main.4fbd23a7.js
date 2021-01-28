@@ -199,4 +199,4 @@ var e=require("process");Object.defineProperty(exports,"__esModule",{value:!0}),
 },{"redux":"WZ36"}],"aRYt":[function(require,module,exports) {
 "use strict";var e=a(require("react")),r=require("react-dom"),t=require("react-redux"),u=a(require("./App")),d=a(require("./redux/store"));function a(e){return e&&e.__esModule?e:{default:e}}(0,r.render)(e.default.createElement(t.Provider,{store:d.default},e.default.createElement(u.default,null)),document.getElementById("root"));
 },{"react":"HdMw","react-dom":"X9zx","react-redux":"sYSi","./App":"Nb6v","./redux/store":"i6jH"}]},{},["aRYt"], null)
-//# sourceMappingURL=/main.4fbd23a7.js.map
+//# sourceMappingURL=/pokedex/main.4fbd23a7.js.map
