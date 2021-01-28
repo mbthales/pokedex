@@ -7,7 +7,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "http://mbthales.github.io/pokedex",
+  "homepage": "https://mbthales.github.io/pokedex/",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "babel-plugin-styled-components": "^1.12.0",
