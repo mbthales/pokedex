@@ -30,7 +30,7 @@ const App = () => {
   }, [pokemonsUrls]);
 
   return(
-    <Router>
+    <Router basename={window.location.pathname || ''}>
       <DefaultCss></DefaultCss>
       <Switch>
         <Route exact path="/">
