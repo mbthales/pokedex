@@ -12,13 +12,12 @@ const DefaultCss = createGlobalStyle`
   }
 
   #root{
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
   }
 
   main{
-    width: 100%;
     max-width: 800px;
   }
 `;
@@ -47,13 +46,18 @@ const pokemonTypesColors = {
 const PokemonTypes = styled.li`
   background-color: ${({ typeName }) => pokemonTypesColors[typeName]};
   width: 150px;
-  font-size: 1vw;
 `;
 
 const PokemonStats = styled.li`
   width: ${({ baseStat }) => `${baseStat}%`};
   background-color: ${colors.primary};
+
   color: ${colors.secundary};
+  word-break: break-all;
+
+  @media(min-width: 768px){
+    display: block;
+  }
 `;
 
 const LinkToReturn = styled(Link)`
@@ -61,15 +65,13 @@ const LinkToReturn = styled(Link)`
   top: 30px;
   left: 30px;
   background-color: transparent;
+
   font-size: 1.5rem;
   color: ${colors.quinary};
   font-weight: bold;
 `;
 
 const PokemonWrapper = styled.div`
-  text-align: center;
-  padding: 0 30px;
-  
   h2{
     font-size: 1.2rem;
     color: ${colors.quinary};
@@ -81,14 +83,15 @@ const PokemonWrapper = styled.div`
     height: 200px;
   }
 
-  p~p{
-    margin-top: 20px;
-  }
-
+  
   p{
     text-align: left;
     font-weight: bold;
     font-size: 0.9rem;
+    
+    &:nth-child(n + 2){
+      margin-top: 20px;
+    }
 
     span{
       font-weight: normal;
@@ -96,11 +99,31 @@ const PokemonWrapper = styled.div`
   }
 
   li{
-    height: 30px;
-    border-radius: 3px;
-    font-size: 0.7rem;
-    line-height: 30px;
     margin-bottom: 5px;
+
+    font-size: 0.7rem;
+    border-radius: 3px;
+    line-height: 30px;
+  }
+
+  @media(min-width: 768px){
+  p{
+    text-align: center;
+
+    &:nth-child(3){
+      margin-top: 0;
+    }
+  }
+
+   div {
+     display: flex;
+     justify-content: center;
+
+     div{
+       flex-direction: column;
+       display: flex;
+     }
+   }
   }
 `;
 

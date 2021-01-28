@@ -23,12 +23,16 @@ const PokemonDetails = () => {
       <LinkToReturn to="/">&#10094;</LinkToReturn>
       <PokemonWrapper>
         <h2>{name}</h2>
-        <img src={image}/>
-        <p>Weight: <span>{weight}kg</span></p>
-        <p>Types:</p>
-        <ul>
-          {types.map((type, i) => <PokemonTypes typeName={type} key={i}>{type}</PokemonTypes>)}
-        </ul>
+        <div>
+          <img src={image}/>
+          <div>
+            <p>Weight: <span>{weight}kg</span></p>
+            <p>Types:</p>
+            <ul>
+              {types.map((type, i) => <PokemonTypes typeName={type} key={i}>{type}</PokemonTypes>)}
+            </ul>
+          </div>
+        </div>
         <p>Stats:</p>
         <ul>
           {stats.map(({ baseStat, nameStat }, i) => <PokemonStats key={i} baseStat={baseStat}>{nameStat}</PokemonStats>)}
