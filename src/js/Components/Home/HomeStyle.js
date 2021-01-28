@@ -1,18 +1,23 @@
 import styled from "styled-components";
 
+import { colors } from '../../AppStyle';
+
 const Header = styled.header`
   height: 200px;
-  background-color: #A42323;
-`;
+  background-color: ${colors.primary};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-const Title = styled.h1`
-  line-height: 200px; 
-  font-size: 3rem;
-  color: #FAF9F9;
+  h1{
+    font-size: 3rem;
+    color: ${colors.secundary};
+    font-weight: normal;
+  }
 `;
 
 const LoadingMsg = styled.p`
   margin-top: 60px;
 `;
 
-export { Header, Title, LoadingMsg };
+export { Header, LoadingMsg };

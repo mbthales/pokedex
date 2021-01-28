@@ -1,6 +1,8 @@
 import styled, { createGlobalStyle }  from "styled-components";
 import { Link } from "react-router-dom";
 
+import { colors } from '../../AppStyle';
+
 const DefaultCss = createGlobalStyle`
   html,
   body,
@@ -39,16 +41,19 @@ const pokemonTypesColors = {
   ghost: "#705798",
   dark: "#6f5848",
   steel: "#b8b8d1",
+  fairy: "#e38ee2"
 };
 
 const PokemonTypes = styled.li`
-  background-color: ${({ typeName }) => pokemonTypesColors[typeName]}
+  background-color: ${({ typeName }) => pokemonTypesColors[typeName]};
+  width: 150px;
+  font-size: 1vw;
 `;
 
 const PokemonStats = styled.li`
   width: ${({ baseStat }) => `${baseStat}%`};
-  background-color: #A42323;
-  color: #FAF9F9;
+  background-color: ${colors.primary};
+  color: ${colors.secundary};
 `;
 
 const LinkToReturn = styled(Link)`
@@ -57,19 +62,46 @@ const LinkToReturn = styled(Link)`
   left: 30px;
   background-color: transparent;
   font-size: 1.5rem;
-  color: #131111;
+  color: ${colors.quinary};
   font-weight: bold;
 `;
 
-const PokemonName = styled.h2`
-  font-size: 1.2rem;
-  color: #131111;
-  font-weight: normal;
+const PokemonWrapper = styled.div`
+  text-align: center;
+  padding: 0 30px;
+  
+  h2{
+    font-size: 1.2rem;
+    color: ${colors.quinary};
+    font-weight: normal;
+  }
+
+  img{
+    width: 200px;
+    height: 200px;
+  }
+
+  p~p{
+    margin-top: 20px;
+  }
+
+  p{
+    text-align: left;
+    font-weight: bold;
+    font-size: 0.9rem;
+
+    span{
+      font-weight: normal;
+    }
+  }
+
+  li{
+    height: 30px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    line-height: 30px;
+    margin-bottom: 5px;
+  }
 `;
 
-const PokemonImg = styled.img`
-  width: 150px;
-  height: 150px;
-`;
-
-export { DefaultCss, PokemonTypes, PokemonStats, LinkToReturn, PokemonName, PokemonImg };
+export { DefaultCss, PokemonTypes, PokemonStats, LinkToReturn, PokemonWrapper };

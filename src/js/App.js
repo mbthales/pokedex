@@ -6,12 +6,14 @@ import {
   Route
 } from "react-router-dom";
 
+import { hot } from 'react-hot-loader';
+
 import Home from "./Components/Home/Home";
 import PokemonDetails from "./Components/Pokemon-Details/PokemonDetails";
 
 import { getPokemonsUrls, getPokemonsInfo } from "./helpers/helpers";
 
-import DefaultCss from './AppStyle';
+import { DefaultCss } from './AppStyle';
 
 const App = () => {
   const urlDefault = useSelector(({ urlDefault }) => urlDefault);
@@ -44,4 +46,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default hot(module)(App);

@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getPokemonsUrls } from "../../helpers/helpers";
 
-import { LinkToPokemonDetail, PokemonName, 
-  PokemonImg, LoadingMsg, BtnMorePokemons } from './PokemonsContainerStyle'
+import { LinkToPokemonDetail, LoadingMsg, BtnMorePokemons } from './PokemonsContainerStyle'
 
 const PokemonsContainer = () => {
   const [isLoadingMorePokemons, setIsLoadingMorePokemons] = useState(false);
@@ -29,18 +28,16 @@ const PokemonsContainer = () => {
     <main>
       {
         pokemonsInfo.map(({ id, name, image }) => (
-          
           <LinkToPokemonDetail 
             key={id}  
             onClick={() => getPokemonDetailsSelected(id)} 
             to="/pokemon-details" 
           >
             <div>
-              <PokemonName>{name}</PokemonName>
-                <PokemonImg src={image}/>
+              <h2>{name}</h2>
+                <img src={image}/>
             </div>
           </LinkToPokemonDetail>
-          
         ))        
       }
       {
