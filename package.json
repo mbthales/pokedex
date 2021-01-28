@@ -3,8 +3,11 @@
   "main": ".src/js/main.js",
   "scripts": {
     "dev": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --public-url /pokedex/",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
+  "homepage": "http://mbthales.github.io/pokedex",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "babel-plugin-styled-components": "^1.12.0",
@@ -12,6 +15,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "gh-pages": "^3.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
